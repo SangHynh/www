@@ -23,7 +23,6 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    // Directly define AuthenticationManager bean here
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
         AuthenticationManagerBuilder authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
