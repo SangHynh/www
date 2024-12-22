@@ -1,28 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Quản lý Khóa học</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            padding: 20px 0;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        button {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .add-course-btn {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination li {
+            list-style-type: none;
+            margin: 0 5px;
+        }
+
+        .pagination a {
+            text-decoration: none;
+            color: #007bff;
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .pagination a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .pagination a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+    </style>
 </head>
 <body>
+
 <h1>Danh sách Khóa học</h1>
 
 <!-- Nút Thêm khóa học -->
-<div style="margin-top: 20px;">
-    <a href="/courses/add" style="text-decoration: none;">
-        <button style="padding: 5px 10px; background-color: green; color: white;">Thêm Khóa học</button>
+<div class="add-course-btn">
+    <a href="/courses/add">
+        <button>Thêm Khóa học</button>
     </a>
 </div>
 
 <!-- Hiển thị thông tin khóa học -->
-<table border="1">
+<table>
     <thead>
     <tr>
         <th>ID</th>
         <th>Tên khóa học</th>
         <th>Mô tả</th>
+        <th>Hành động</th>
     </tr>
     </thead>
     <tbody>
@@ -32,8 +121,8 @@
         <td th:text="${course.name}"></td>
         <td th:text="${course.description}"></td>
         <td>
-            <!-- Nút xóa -->
-            <form action="/courses/delete/{course.id}" method="POST" th:action="@{/courses/delete/{id}(id=${course.id})}">
+            <!-- Nút xóa với xác nhận -->
+            <form action="/courses/delete/{course.id}" method="POST" th:action="@{/courses/delete/{id}(id=${course.id})}" onsubmit="return confirmDelete()">
                 <button type="submit">Xóa</button>
             </form>
         </td>
@@ -42,15 +131,23 @@
 </table>
 
 <!-- Hiển thị phân trang -->
-<div>
-    <ul style="list-style-type: none; padding: 0; margin: 0; display: flex;">
-        <li th:each="pageNumber : ${pageNumbers}" style="margin-right: 10px; display: inline;">
+<div class="pagination">
+    <ul style="display: flex; padding: 0; margin: 0;">
+        <li th:each="pageNumber : ${pageNumbers}">
             <a th:href="@{/courses(page=${pageNumber}, size=${10})}"
                th:text="${pageNumber}"
-               style="text-decoration: none; color: #007bff;"></a>
+               class="pagination-link"
+               th:classappend="${pageNumber == currentPage} ? ' active' : ''">
+            </a>
         </li>
     </ul>
 </div>
+
+<script>
+    function confirmDelete() {
+        return confirm('Bạn muốn xóa khóa học này?');
+    }
+</script>
 
 </body>
 </html>

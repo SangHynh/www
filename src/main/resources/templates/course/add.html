@@ -4,22 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thêm Khóa học</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            padding: 20px 0;
+            margin: 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 8px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        input[type="text"], textarea {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            text-align: center;
+            display: block;
+            margin-top: 20px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
+
 <h1>Thêm Khóa học</h1>
 
-<!-- Form thêm khóa học -->
-<form action="/courses/add" method="POST">
-    <label for="courseName">Tên Khóa học:</label><br>
-    <input type="text" id="courseName" name="name" required><br><br>
+<div class="container">
+    <form action="/courses/add" method="POST">
+        <label for="courseName">Tên Khóa học:</label>
+        <input type="text" id="courseName" name="name" required>
 
-    <label for="courseDescription">Mô tả:</label><br>
-    <textarea id="courseDescription" name="description" required></textarea><br><br>
+        <label for="courseDescription">Mô tả:</label>
+        <textarea id="courseDescription" name="description" required></textarea>
 
-    <button type="submit">Thêm Khóa học</button>
-</form>
+        <button type="submit">Thêm Khóa học</button>
+    </form>
 
-<br>
-<a href="/courses">Trở về danh sách khóa học</a>
+    <a href="/courses">Trở về danh sách khóa học</a>
+</div>
+
 </body>
 </html>
