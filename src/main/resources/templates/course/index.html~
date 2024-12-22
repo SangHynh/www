@@ -9,6 +9,13 @@
 <body>
 <h1>Danh sách Khóa học</h1>
 
+<!-- Nút Thêm khóa học -->
+<div style="margin-top: 20px;">
+    <a href="/courses/add" style="text-decoration: none;">
+        <button style="padding: 5px 10px; background-color: green; color: white;">Thêm Khóa học</button>
+    </a>
+</div>
+
 <!-- Hiển thị thông tin khóa học -->
 <table border="1">
     <thead>

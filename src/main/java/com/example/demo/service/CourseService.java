@@ -30,6 +30,9 @@ public class CourseService {
         return courseRepository.findAll(pageable);
     }
 
-    
+    public void deleteCourse(Long id) {
+        courseRepository.deleteById(id);
+    }
+
 
 }

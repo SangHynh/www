@@ -59,4 +59,10 @@ public class CourseController {
         return "redirect:/courses";
     }
 
+    @PostMapping("/delete/{id}")
+    public String deleteCourse(@PathVariable("id") Long id) {
+        courseService.deleteCourse(id);
+        return "redirect:/courses"; // Quay lại danh sách khóa học sau khi xóa
+    }
+
 }
