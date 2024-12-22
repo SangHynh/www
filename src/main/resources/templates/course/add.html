@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm Khóa học</title>
+</head>
+<body>
+<h1>Thêm Khóa học</h1>
+
+<!-- Form thêm khóa học -->
+<form action="/courses/add" method="POST">
+    <label for="courseName">Tên Khóa học:</label><br>
+    <input type="text" id="courseName" name="name" required><br><br>
+
+    <label for="courseDescription">Mô tả:</label><br>
+    <textarea id="courseDescription" name="description" required></textarea><br><br>
+
+    <button type="submit">Thêm Khóa học</button>
+</form>
+
+<br>
+<a href="/courses">Trở về danh sách khóa học</a>
+</body>
+</html>
