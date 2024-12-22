@@ -88,7 +88,7 @@ public class SecurityConfig {
     // Thay vì dùng @Bean, tạo trực tiếp trong phương thức này để tránh vòng lặp
     public AuthenticationSuccessHandler authenticationSuccessHandler() {
         return (request, response, authentication) -> {
-            response.sendRedirect("/home");
+            response.sendRedirect("/");
         };
     }
 }
